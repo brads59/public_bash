@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Define the root directory to start the search
+ROOT_DIR=~
+
+# Find all directories containing a .git folder and run git fetch and git status
+find "$ROOT_DIR" -name ".git" -type d | while read -r gitdir; do
+  # Get the directory containing the .git folder
+  repo_dir=$(dirname "$gitdir")
+  echo "---------------------------------------"
+  echo "Checking repository: $repo_dir"
+  cd "$repo_dir" || continue
+
+  # Fetch and get status for the repository
+  git fetch
+  git status
+done
+
