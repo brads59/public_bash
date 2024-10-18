@@ -10,7 +10,8 @@ read -p "Enter the namespace: " namespace
 read -p "Enter the pod name: " pod_name
 
 # Prompt for the command (without /bin/bash -c)
-read -p "Enter the command to run inside the pod (e.g., 'pxctl volume inspect pvc-id | egrep \"Name|Size|used\"'): " pod_command
+#read -p "Enter the command to run inside the pod (e.g., 'pxctl volume inspect pvc-id | egrep \"Name|Size|used\"'): " pod_command
+read -p "Enter the command to run inside the pod (e.g., 'df -h'): " pod_command
 
 # Execute the kubectl command with the provided inputs
 kubectl --context "$context" --namespace "$namespace" exec "$pod_name" -- /bin/bash -c "$pod_command"
